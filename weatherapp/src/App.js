@@ -2,9 +2,28 @@ import React, {useState} from "react";
 import axios from 'axios'
 
 
-  function App() {
 
-  //const url= 'https://api.openweathermap.org/data/2.5/weather?q=dallas&appid=5e73cb2a276e2ee3fae5b79f06a8c105'
+function App() {
+
+  const [data, setData]= useState({})
+  const [location, setLocation] =useState('')
+
+  const url= 'https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=5e73cb2a276e2ee3fae5b79f06a8c105'
+
+  const searchLocation = (event) =>{
+
+    if (event.key =='Enter'){
+      axios.get(url).then((response) =>{
+        setData(response.data)
+        console.log(response.data)
+  
+      })
+    }
+
+      
+
+  }
+
 
 
   return (
@@ -23,13 +42,16 @@ import axios from 'axios'
           </div>
         <div className="bottom">
           <div className="feels">
-            <p>65°F</p>
+            <p className="bold">65°F</p>
+            <p>Feels Like</p>
           </div>
           <div className="humidity">
             <p>20%</p>
+            <p>Humidity</p>
           </div>
           <div className="wind">
-            12 MPH
+            <p className="bold">12 MPH</p>
+            <p>Wind Speed</p>
 
           </div>
         </div>

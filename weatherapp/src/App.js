@@ -6,13 +6,13 @@ import axios from 'axios'
 function App() {
 
   const [data, setData]= useState({})
-  const [location, setLocation] =useState('')
+  const [location, setLocation] = useState('')
 
-  const url= 'https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=5e73cb2a276e2ee3fae5b79f06a8c105'
-
+  const url= https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=5e73cb2a276e2ee3fae5b79f06a8c105
+//URL not letting me pass in location as a varaible 
   const searchLocation = (event) =>{
 
-    if (event.key =='Enter'){
+    if (event.key ==='Enter'){
       axios.get(url).then((response) =>{
         setData(response.data)
         console.log(response.data)
@@ -25,13 +25,12 @@ function App() {
   }
 
 
-
   return (
     <div className="app">
       <div className="search">
         <input 
         value={location}
-        onChange={event => searchLocation(event.target.value)}
+        onChange={event => setLocation(event.target.value)}
         onKeyPress={searchLocation}
         placeholder="Enter Location"
         type="text"/>
